@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// schema.prisma
+
+// Define the Applications table
+model Application {
+  id    Int     @id @default(autoincrement())
+  name  String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  deletedAt  DateTime?
+  Event Event[]
+}
+
+// Define the Events table
+model Event {
+  id             Int         @id @default(autoincrement())
+  application_id Int
+  tag            String
+  body           String
+  level          Level
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  deleted_at  DateTime?
+  application    Application @relation(fields: [application_id], references: [id])
+}
+
+// Define the Users table
+model User {
+  id    Int    @id @default(autoincrement())
+  email String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  deleted_at  DateTime?
+}
+
+// Define an enumeration for the "level" field in the Events table
+enum Level {
+  INFO
+  WARN
+  ERROR
+}
