@@ -17,6 +17,7 @@ export class WhoopsClient {
             body: JSON.stringify({
                 tag,
                 body,
+                applicationId: this.context.whoopsSettings.applicationId,
                 level: 'INFO'
             })
         })
@@ -28,6 +29,7 @@ export class WhoopsClient {
             body: JSON.stringify({
                 tag,
                 body,
+                applicationId: this.context.whoopsSettings.applicationId,
                 level: 'WARN'
             })
         })
@@ -39,6 +41,7 @@ export class WhoopsClient {
             body: JSON.stringify({
                 tag,
                 body,
+                applicationId: this.context.whoopsSettings.applicationId,
                 level: 'ERROR'
             })
         })

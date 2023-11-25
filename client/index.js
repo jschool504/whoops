@@ -50,6 +50,7 @@ var WhoopsClient = /** @class */ (function () {
                             body: JSON.stringify({
                                 tag: tag,
                                 body: body,
+                                applicationId: this.context.whoopsSettings.applicationId,
                                 level: 'INFO'
                             })
                         })];
@@ -69,6 +70,7 @@ var WhoopsClient = /** @class */ (function () {
                             body: JSON.stringify({
                                 tag: tag,
                                 body: body,
+                                applicationId: this.context.whoopsSettings.applicationId,
                                 level: 'WARN'
                             })
                         })];
@@ -88,6 +90,7 @@ var WhoopsClient = /** @class */ (function () {
                             body: JSON.stringify({
                                 tag: tag,
                                 body: body,
+                                applicationId: this.context.whoopsSettings.applicationId,
                                 level: 'ERROR'
                             })
                         })];

@@ -1,8 +1,30 @@
+version: '3.8'
+
 services:
-  db:
+
+  whoops:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm run dev
+    ports:
+      - "4000:4000"
+    networks:
+      - external_network
+      - app_network
+
+  whoops-db:
     image: postgres
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
-    ports:
-      - "5432:5432"
+    networks:
+      - app_network
+
+
+networks:
+  app_network:
+    driver: overlay
+  external_network:
+    name: briefbill_app_network
+    external: true
