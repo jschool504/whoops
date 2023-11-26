@@ -1,4 +1,4 @@
-import EventRepository from '@/lib/repositories/event-repository'
+import EventRepository, { CanFindByAppInRange } from '@/lib/repositories/event-repository'
 import EventMapper from '@/lib/repositories/mappers/event-mapper'
 import { Event } from '@/lib/models/domain'
 import { PrismaClient, Event as PrismaEvent } from '@prisma/client'
@@ -15,7 +15,7 @@ export default class Context {
     }
 
     @singleton
-    get eventRepository(): HasInsert<Event> & HasAll<Event> {
+    get eventRepository(): HasInsert<Event> & HasAll<Event> & CanFindByAppInRange {
         return new EventRepository({
             prisma: this.prisma,
             mapper: EventMapper

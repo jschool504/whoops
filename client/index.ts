@@ -12,7 +12,7 @@ export class WhoopsClient {
     ) {}
 
     async info(tag: string, body: string) {
-        await fetch(this.context.whoopsSettings.host, {
+        await fetch(this.context.whoopsSettings.host + '/events', {
             method: 'post',
             body: JSON.stringify({
                 tag,
@@ -24,7 +24,7 @@ export class WhoopsClient {
     }
 
     async warn(tag: string, body: string) {
-        await fetch(this.context.whoopsSettings.host, {
+        await fetch(this.context.whoopsSettings.host + '/events', {
             method: 'post',
             body: JSON.stringify({
                 tag,
@@ -36,7 +36,7 @@ export class WhoopsClient {
     }
 
     async error(tag: string, body: string) {
-        await fetch(this.context.whoopsSettings.host, {
+        await fetch(this.context.whoopsSettings.host + '/events', {
             method: 'post',
             body: JSON.stringify({
                 tag,
